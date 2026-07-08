@@ -5,16 +5,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Copy, Trash2, Minimize2, AlignLeft } from "lucide-react";
+import { useI18n } from "@/components/i18n-provider";
 
 export function JsonFormatter() {
   const [input, setInput] = React.useState("");
   const [output, setOutput] = React.useState("");
   const [error, setError] = React.useState("");
+  const { t } = useI18n();
 
   const formatJson = () => {
     setError("");
     if (!input.trim()) {
-      setError("请输入 JSON 字符串");
+      setError(t("json.error_empty"));
       setOutput("");
       return;
     }
@@ -31,7 +33,7 @@ export function JsonFormatter() {
   const compressJson = () => {
     setError("");
     if (!input.trim()) {
-      setError("请输入 JSON 字符串");
+      setError(t("json.error_empty"));
       setOutput("");
       return;
     }
@@ -56,7 +58,6 @@ export function JsonFormatter() {
     try {
       await navigator.clipboard.writeText(output);
     } catch {
-      // fallback
       const textArea = document.createElement("textarea");
       textArea.value = output;
       document.body.appendChild(textArea);
@@ -71,8 +72,8 @@ export function JsonFormatter() {
       {/* Input */}
       <Card className="flex flex-1 flex-col">
         <CardHeader className="pb-3">
-          <CardTitle className="text-lg">输入</CardTitle>
-          <CardDescription>粘贴或输入 JSON 字符串</CardDescription>
+          <CardTitle className="text-lg">{t("json.input")}</CardTitle>
+          <CardDescription>{t("json.input.desc")}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-1 flex-col gap-3">
           <Textarea
@@ -87,15 +88,15 @@ export function JsonFormatter() {
           <div className="flex flex-wrap gap-2">
             <Button onClick={formatJson} size="sm">
               <AlignLeft className="mr-1 h-4 w-4" />
-              格式化
+              {t("json.format")}
             </Button>
             <Button onClick={compressJson} variant="secondary" size="sm">
               <Minimize2 className="mr-1 h-4 w-4" />
-              压缩
+              {t("json.compress")}
             </Button>
             <Button onClick={clearAll} variant="outline" size="sm">
               <Trash2 className="mr-1 h-4 w-4" />
-              清空
+              {t("json.clear")}
             </Button>
           </div>
           {error && (
@@ -111,19 +112,19 @@ export function JsonFormatter() {
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-lg">输出</CardTitle>
-              <CardDescription>格式化后的 JSON</CardDescription>
+              <CardTitle className="text-lg">{t("json.output")}</CardTitle>
+              <CardDescription>{t("json.output.desc")}</CardDescription>
             </div>
             <Button onClick={copyOutput} variant="outline" size="sm" disabled={!output}>
               <Copy className="mr-1 h-4 w-4" />
-              复制
+              {t("json.copy")}
             </Button>
           </div>
         </CardHeader>
         <CardContent className="flex-1">
           <pre className="h-full min-h-[300px] overflow-auto rounded-md bg-muted p-4 font-mono text-sm">
             {output || (
-              <span className="text-muted-foreground">格式化结果将显示在这里...</span>
+              <span className="text-muted-foreground">{t("json.placeholder")}</span>
             )}
           </pre>
         </CardContent>

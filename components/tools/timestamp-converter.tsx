@@ -4,6 +4,7 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Copy, RefreshCw } from "lucide-react";
+import { useI18n } from "@/components/i18n-provider";
 
 export function TimestampConverter() {
   const [timestampInput, setTimestampInput] = React.useState("");
@@ -14,6 +15,7 @@ export function TimestampConverter() {
   const [datetimeError, setDatetimeError] = React.useState("");
   const [currentTimestamp, setCurrentTimestamp] = React.useState(0);
   const [currentTime, setCurrentTime] = React.useState("");
+  const { t } = useI18n();
 
   // Real-time clock
   React.useEffect(() => {
@@ -41,12 +43,12 @@ export function TimestampConverter() {
     setTimestampError("");
     setTimestampResult("");
     if (!timestampInput.trim()) {
-      setTimestampError("请输入时间戳");
+      setTimestampError(t("ts.error_empty"));
       return;
     }
     const ts = Number(timestampInput);
     if (isNaN(ts)) {
-      setTimestampError("无效的时间戳，请输入数字");
+      setTimestampError(t("ts.error_invalid"));
       return;
     }
     let date: Date;
@@ -57,7 +59,7 @@ export function TimestampConverter() {
       date = new Date(ts * 1000);
     }
     if (isNaN(date.getTime())) {
-      setTimestampError("无效的时间戳");
+      setTimestampError(t("ts.error_invalid_ts"));
       return;
     }
     setTimestampResult(formatDate(date));
@@ -67,17 +69,17 @@ export function TimestampConverter() {
     setDatetimeError("");
     setDatetimeResult("");
     if (!datetimeInput) {
-      setDatetimeError("请选择日期时间");
+      setDatetimeError(t("ts.error_empty_date"));
       return;
     }
     const date = new Date(datetimeInput);
     if (isNaN(date.getTime())) {
-      setDatetimeError("无效的日期时间");
+      setDatetimeError(t("ts.error_invalid_date"));
       return;
     }
     const seconds = Math.floor(date.getTime() / 1000);
     const milliseconds = date.getTime();
-    setDatetimeResult(`秒级时间戳: ${seconds}\n毫秒级时间戳: ${milliseconds}`);
+    setDatetimeResult(`${t("ts.seconds_label")}: ${seconds}\n${t("ts.millis_label")}: ${milliseconds}`);
   };
 
   const copyText = async (text: string) => {
@@ -103,17 +105,17 @@ export function TimestampConverter() {
       {/* Current Time Display */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-lg">当前时间</CardTitle>
-          <CardDescription>实时更新的当前时间和时间戳</CardDescription>
+          <CardTitle className="text-lg">{t("ts.current_time")}</CardTitle>
+          <CardDescription>{t("ts.current_time.desc")}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap items-center gap-4">
             <div className="rounded-lg bg-muted px-4 py-2">
-              <p className="text-xs text-muted-foreground">本地时间</p>
+              <p className="text-xs text-muted-foreground">{t("ts.local_time")}</p>
               <p className="font-mono text-lg font-semibold">{currentTime}</p>
             </div>
             <div className="rounded-lg bg-muted px-4 py-2">
-              <p className="text-xs text-muted-foreground">秒级时间戳</p>
+              <p className="text-xs text-muted-foreground">{t("ts.seconds_ts")}</p>
               <div className="flex items-center gap-2">
                 <p className="font-mono text-lg font-semibold">
                   {Math.floor(currentTimestamp / 1000)}
@@ -129,7 +131,7 @@ export function TimestampConverter() {
               </div>
             </div>
             <div className="rounded-lg bg-muted px-4 py-2">
-              <p className="text-xs text-muted-foreground">毫秒级时间戳</p>
+              <p className="text-xs text-muted-foreground">{t("ts.millis_ts")}</p>
               <div className="flex items-center gap-2">
                 <p className="font-mono text-lg font-semibold">{currentTimestamp}</p>
                 <Button
@@ -152,12 +154,12 @@ export function TimestampConverter() {
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-lg">时间戳 → 日期时间</CardTitle>
-                <CardDescription>输入时间戳，转换为可读时间</CardDescription>
+                <CardTitle className="text-lg">{t("ts.ts_to_date")}</CardTitle>
+                <CardDescription>{t("ts.ts_to_date.desc")}</CardDescription>
               </div>
               <Button variant="outline" size="sm" onClick={fillCurrentTimestamp}>
                 <RefreshCw className="mr-1 h-4 w-4" />
-                当前时间
+                {t("ts.current")}
               </Button>
             </div>
           </CardHeader>
@@ -165,7 +167,7 @@ export function TimestampConverter() {
             <input
               type="text"
               className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 font-mono"
-              placeholder="输入时间戳（秒或毫秒）"
+              placeholder={t("ts.ts_placeholder")}
               value={timestampInput}
               onChange={(e) => {
                 setTimestampInput(e.target.value);
@@ -173,7 +175,7 @@ export function TimestampConverter() {
               }}
             />
             <Button onClick={handleTimestampConvert} size="sm">
-              转换
+              {t("ts.convert")}
             </Button>
             {timestampError && (
               <div className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
@@ -201,8 +203,8 @@ export function TimestampConverter() {
         {/* Date to Timestamp */}
         <Card className="flex-1">
           <CardHeader className="pb-3">
-            <CardTitle className="text-lg">日期时间 → 时间戳</CardTitle>
-            <CardDescription>选择日期时间，转换为时间戳</CardDescription>
+            <CardTitle className="text-lg">{t("ts.date_to_ts")}</CardTitle>
+            <CardDescription>{t("ts.date_to_ts.desc")}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             <input
@@ -215,7 +217,7 @@ export function TimestampConverter() {
               }}
             />
             <Button onClick={handleDatetimeConvert} size="sm">
-              转换
+              {t("ts.convert")}
             </Button>
             {datetimeError && (
               <div className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
