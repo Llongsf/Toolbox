@@ -2,7 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Braces, Clock, Binary } from "lucide-react";
+import {
+  Braces,
+  Clock,
+  Binary,
+  Link2,
+  Hash,
+  ShieldCheck,
+  Regex,
+  Fingerprint,
+  Palette,
+  Calculator,
+  GitCompare,
+  KeyRound,
+  Pilcrow,
+} from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { toolCategories, getToolsByCategory, type ToolCategory } from "@/lib/tools-config";
@@ -12,6 +26,16 @@ const iconMap: Record<string, React.ReactNode> = {
   "json-formatter": <Braces className="h-4 w-4" />,
   "timestamp-converter": <Clock className="h-4 w-4" />,
   "base64-encoder": <Binary className="h-4 w-4" />,
+  "url-encoder": <Link2 className="h-4 w-4" />,
+  "hash-calculator": <Hash className="h-4 w-4" />,
+  "jwt-decoder": <ShieldCheck className="h-4 w-4" />,
+  "regex-tester": <Regex className="h-4 w-4" />,
+  "uuid-generator": <Fingerprint className="h-4 w-4" />,
+  "color-converter": <Palette className="h-4 w-4" />,
+  "number-base-converter": <Calculator className="h-4 w-4" />,
+  "text-diff": <GitCompare className="h-4 w-4" />,
+  "password-generator": <KeyRound className="h-4 w-4" />,
+  "lorem-generator": <Pilcrow className="h-4 w-4" />,
 };
 
 export function Sidebar() {

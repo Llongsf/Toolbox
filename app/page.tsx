@@ -1,11 +1,36 @@
 import Link from "next/link";
-import { Braces, Clock, Binary, ArrowRight } from "lucide-react";
+import {
+  Braces,
+  Clock,
+  Binary,
+  Link2,
+  Hash,
+  ShieldCheck,
+  Regex,
+  Fingerprint,
+  Palette,
+  Calculator,
+  GitCompare,
+  KeyRound,
+  Pilcrow,
+  ArrowRight,
+} from "lucide-react";
 import { tools } from "@/lib/tools-config";
 
 const iconMap: Record<string, React.ReactNode> = {
   "json-formatter": <Braces className="h-8 w-8" />,
   "timestamp-converter": <Clock className="h-8 w-8" />,
   "base64-encoder": <Binary className="h-8 w-8" />,
+  "url-encoder": <Link2 className="h-8 w-8" />,
+  "hash-calculator": <Hash className="h-8 w-8" />,
+  "jwt-decoder": <ShieldCheck className="h-8 w-8" />,
+  "regex-tester": <Regex className="h-8 w-8" />,
+  "uuid-generator": <Fingerprint className="h-8 w-8" />,
+  "color-converter": <Palette className="h-8 w-8" />,
+  "number-base-converter": <Calculator className="h-8 w-8" />,
+  "text-diff": <GitCompare className="h-8 w-8" />,
+  "password-generator": <KeyRound className="h-8 w-8" />,
+  "lorem-generator": <Pilcrow className="h-8 w-8" />,
 };
 
 export default function HomePage() {
