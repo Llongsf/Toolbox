@@ -9,12 +9,13 @@ import {
   Hash,
   ShieldCheck,
   Regex,
-  Fingerprint,
   Palette,
   Calculator,
   GitCompare,
   KeyRound,
   Pilcrow,
+  Radar,
+  ScanSearch,
   ArrowRight,
 } from "lucide-react";
 import { tools } from "@/lib/tools-config";
@@ -29,24 +30,29 @@ const iconMap: Record<string, React.ReactNode> = {
   "hash-calculator": <Hash className="h-8 w-8" />,
   "jwt-decoder": <ShieldCheck className="h-8 w-8" />,
   "regex-tester": <Regex className="h-8 w-8" />,
-  "uuid-generator": <Fingerprint className="h-8 w-8" />,
   "color-converter": <Palette className="h-8 w-8" />,
   "number-base-converter": <Calculator className="h-8 w-8" />,
   "text-diff": <GitCompare className="h-8 w-8" />,
   "password-generator": <KeyRound className="h-8 w-8" />,
   "lorem-generator": <Pilcrow className="h-8 w-8" />,
+  "dnsdumpster": <Radar className="h-8 w-8" />,
+  "crt-sh": <ScanSearch className="h-8 w-8" />,
 };
 
 const toolNameKeyMap: Record<string, TranslationKey> = {
   "json-formatter": "tool.json_formatter",
   "timestamp-converter": "tool.timestamp_converter",
   "base64-encoder": "tool.base64_encoder",
+  "dnsdumpster": "tool.dnsdumpster",
+  "crt-sh": "tool.crt_sh",
 };
 
 const toolDescKeyMap: Record<string, TranslationKey> = {
   "json-formatter": "tool.json_formatter.desc",
   "timestamp-converter": "tool.timestamp_converter.desc",
   "base64-encoder": "tool.base64_encoder.desc",
+  "dnsdumpster": "tool.dnsdumpster.desc",
+  "crt-sh": "tool.crt_sh.desc",
 };
 
 export default function HomePage() {

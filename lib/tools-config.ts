@@ -4,6 +4,7 @@ export interface ToolConfig {
   category: string;
   description: string;
   icon?: string;
+  externalUrl?: string;
 }
 
 export const toolCategories = [
@@ -11,6 +12,7 @@ export const toolCategories = [
   "数据格式化",
   "文本处理",
   "开发工具",
+  "网络安全",
 ] as const;
 
 export type ToolCategory = (typeof toolCategories)[number];
@@ -59,12 +61,6 @@ export const tools: ToolConfig[] = [
     description: "实时测试正则匹配，高亮显示并展示捕获组",
   },
   {
-    id: "uuid-generator",
-    name: "UUID 生成器",
-    category: "开发工具",
-    description: "生成 UUID v4 / v7，支持批量与格式自定义",
-  },
-  {
     id: "color-converter",
     name: "颜色转换器",
     category: "开发工具",
@@ -93,6 +89,20 @@ export const tools: ToolConfig[] = [
     name: "Lorem 文本生成",
     category: "文本处理",
     description: "生成占位文本，按段落/句子/单词",
+  },
+  {
+    id: "dnsdumpster",
+    name: "DNSDumpster 在线反查",
+    category: "网络安全",
+    description: "通过被动 DNS 数据发现子域名与关联主机",
+    externalUrl: "https://dnsdumpster.com/",
+  },
+  {
+    id: "crt-sh",
+    name: "crt.sh 证书透明日志查询",
+    category: "网络安全",
+    description: "查询 SSL/TLS 证书透明日志，发现子域名",
+    externalUrl: "https://crt.sh/",
   },
 ];
 

@@ -11,6 +11,7 @@ export const translations = {
     "category.data_format": "数据格式化",
     "category.text_process": "文本处理",
     "category.dev_tools": "开发工具",
+    "category.security": "网络安全",
     // Tools
     "tool.json_formatter": "JSON 格式化",
     "tool.json_formatter.desc": "格式化、压缩 JSON 数据，支持错误定位",
@@ -18,6 +19,15 @@ export const translations = {
     "tool.timestamp_converter.desc": "时间戳与日期时间的相互转换",
     "tool.base64_encoder": "Base64 编解码",
     "tool.base64_encoder.desc": "文本的 Base64 编码与解码",
+    "tool.dnsdumpster": "DNSDumpster 在线反查",
+    "tool.dnsdumpster.desc": "通过被动 DNS 数据发现子域名与关联主机",
+    "tool.crt_sh": "crt.sh 证书透明日志查询",
+    "tool.crt_sh.desc": "查询 SSL/TLS 证书透明日志，发现子域名",
+    // External tools
+    "ext.title": "外部在线工具",
+    "ext.title.desc": "该工具由第三方网站提供服务，工具箱仅提供入口",
+    "ext.open": "打开网站",
+    "ext.notice": "将在新标签页中打开，实际查询在外部网站完成",
     // JSON Formatter
     "json.input": "输入",
     "json.input.desc": "粘贴或输入 JSON 字符串",
@@ -93,6 +103,7 @@ export const translations = {
     "category.data_format": "Data Formatting",
     "category.text_process": "Text Processing",
     "category.dev_tools": "Dev Tools",
+    "category.security": "Network Security",
     // Tools
     "tool.json_formatter": "JSON Formatter",
     "tool.json_formatter.desc": "Format and minify JSON data with error detection",
@@ -100,6 +111,15 @@ export const translations = {
     "tool.timestamp_converter.desc": "Convert between timestamps and date/time",
     "tool.base64_encoder": "Base64 Encoder",
     "tool.base64_encoder.desc": "Encode and decode Base64 text",
+    "tool.dnsdumpster": "DNSDumpster Lookup",
+    "tool.dnsdumpster.desc": "Discover subdomains and related hosts via passive DNS data",
+    "tool.crt_sh": "crt.sh Certificate Lookup",
+    "tool.crt_sh.desc": "Query Certificate Transparency logs to discover subdomains",
+    // External tools
+    "ext.title": "External Online Tool",
+    "ext.title.desc": "Provided by a third-party website; the toolbox only provides an entry",
+    "ext.open": "Open Website",
+    "ext.notice": "Opens in a new tab; the actual query runs on the external website",
     // JSON Formatter
     "json.input": "Input",
     "json.input.desc": "Paste or type JSON string",

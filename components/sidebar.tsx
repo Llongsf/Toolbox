@@ -10,12 +10,13 @@ import {
   Hash,
   ShieldCheck,
   Regex,
-  Fingerprint,
   Palette,
   Calculator,
   GitCompare,
   KeyRound,
   Pilcrow,
+  Radar,
+  ScanSearch,
 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toolCategories, getToolsByCategory, type ToolCategory } from "@/lib/tools-config";
@@ -31,12 +32,13 @@ const iconMap: Record<string, React.ReactNode> = {
   "hash-calculator": <Hash className="h-4 w-4" />,
   "jwt-decoder": <ShieldCheck className="h-4 w-4" />,
   "regex-tester": <Regex className="h-4 w-4" />,
-  "uuid-generator": <Fingerprint className="h-4 w-4" />,
   "color-converter": <Palette className="h-4 w-4" />,
   "number-base-converter": <Calculator className="h-4 w-4" />,
   "text-diff": <GitCompare className="h-4 w-4" />,
   "password-generator": <KeyRound className="h-4 w-4" />,
   "lorem-generator": <Pilcrow className="h-4 w-4" />,
+  "dnsdumpster": <Radar className="h-4 w-4" />,
+  "crt-sh": <ScanSearch className="h-4 w-4" />,
 };
 
 const categoryKeyMap: Record<string, TranslationKey> = {
@@ -44,12 +46,15 @@ const categoryKeyMap: Record<string, TranslationKey> = {
   "数据格式化": "category.data_format",
   "文本处理": "category.text_process",
   "开发工具": "category.dev_tools",
+  "网络安全": "category.security",
 };
 
 const toolNameKeyMap: Record<string, TranslationKey> = {
   "json-formatter": "tool.json_formatter",
   "timestamp-converter": "tool.timestamp_converter",
   "base64-encoder": "tool.base64_encoder",
+  "dnsdumpster": "tool.dnsdumpster",
+  "crt-sh": "tool.crt_sh",
 };
 
 export function Sidebar() {
